@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>{{ page.title }} - {{ site.title }}</title>
+    <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+  </head>
+  <body class="w-full min-h-screen flex flex-col justify-between">
+    {% include header.html %}
+    
+    <!-- Main quote as full screen parallax image -->
+    <div class="parallax">
+      <div class="flex justify-around" id="quoteBox">
+        Main quote of the day!
+      </div>
+    </div>
+    <main class="flex-1">
+    {{ content }}
+    </main>
+
+    {% include footer.html %}
+  </body>
+
+  <script>
+    
+  </script>
+</html>

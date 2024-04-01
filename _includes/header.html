@@ -1,0 +1,103 @@
+<header class="w-full p-1 z-10">
+  <!-- Desktop header -->
+  <div class="hidden invisible md:visible md:flex flex-row justify-between">
+    <!-- Github avatar with my username -->
+    <a
+      href="{{ site.social.github }}"
+      class="flex items-center outline-none hover:bg-primaryAccent p-4 rounded-md transition-colors"
+    >
+      <img src="{{ site.icon }}" alt="avatar" width="32" />
+      <p class="font-semibold px-2">PushAndCrashProd</p>
+    </a>
+
+    <div class="flex items-center">
+      <nav>
+        <a
+          class="hover:bg-primaryAccent p-4 rounded-md transition-colors font-semibold"
+          href="{{ '/' | relative_url }}"
+          >Home</a
+        >
+        <a
+          class="hover:bg-primaryAccent p-4 rounded-md transition-colors font-semibold"
+          href="{{ '/about' | relative_url }}"
+          >About</a
+        >
+        <a
+          class="hover:bg-primaryAccent p-4 rounded-md transition-colors font-semibold"
+          href="{{ '/posts' | relative_url }}"
+          >Posts</a
+        >
+      </nav>
+    </div>
+  </div>
+
+  <!-- Mobile header -->
+  <div class="flex flex-row justify-between md:hidden md:invisible">
+    <!-- Github avatar with my username -->
+    <a
+      href="{{ site.social.github }}"
+      class="flex items-center outline-none hover:bg-primaryAccent p-4 rounded-md transition-colors"
+    >
+      <img src="{{ site.icon }}" alt="avatar" width="32" />
+      <p class="font-semibold px-2">PushAndCrashProd</p>
+    </a>
+    <div class="p-4">
+      <div
+        class="active:bg-primaryAccent transition-colors rounded-full p-1"
+        onclick="handleMobileMenu()"
+      >
+        <i data-feather="menu"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile menu: To be animated into view on click of the menu button. -->
+  <div
+    id="sidenav"
+    class="fixed h-full bg-white -right-3 top-0 w-0 transition-all md:hidden md:invisible shadow-black shadow-2xl"
+  >
+    <div class="p-4">
+      <div class="flex flex-row justify-end">
+        <div
+          class="p-4 active:bg-slate-600 transition-colors rounded-full"
+          onclick="handleMobileMenu()"
+        >
+          <i id="mob-close-btn" class="invisible hidden" data-feather="x"></i>
+        </div>
+      </div>
+      <nav class="flex flex-col items-center pt-8">
+        <a
+          class="hover:bg-primaryAccent p-4 rounded-md transition-colors font-semibold"
+          href="{{ '/' | relative_url }}"
+          >Home</a
+        >
+        <a
+          class="hover:bg-primaryAccent p-4 rounded-md transition-colors font-semibold"
+          href="{{ '/about' | relative_url }}"
+          >About</a
+        >
+        <a
+          class="hover:bg-primaryAccent p-4 rounded-md transition-colors font-semibold"
+          href="{{ '/posts' | relative_url }}"
+          >Posts</a
+        >
+      </nav>
+    </div>
+  </div>
+  <script>
+    feather.replace();
+
+    const handleMobileMenu = () => {
+      const sideNavElement = document.getElementById("sidenav");
+      const closeBtnElement = document.getElementById("mob-close-btn");
+
+      // To "inflate" the menu
+      sideNavElement.classList.toggle("w-0");
+      sideNavElement.classList.toggle("w-2/3");
+
+      // To make the close button visible
+      closeBtnElement.classList.toggle("invisible");
+      closeBtnElement.classList.toggle("hidden");
+    };
+  </script>
+</header>
