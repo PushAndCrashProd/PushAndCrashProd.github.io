@@ -26,6 +26,20 @@
     animation: 1s ease-out 0s 1 slide-up;
 }
 
+@keyframes progress {
+    0%{
+        width: 0%;
+    }
+
+    100%{
+        width: 100%;
+    }
+}
+
+.progress {
+    animation: 1s ease-out 0s 1 progress;
+}
+
 .parallax {
     background-attachment: fixed;
     background-position: center;
