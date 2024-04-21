@@ -3,16 +3,9 @@ title: My Posts
 layout: posts
 ---
 
-<div class="flex flex-col p-4 items-center">
-    <!-- Parent div for the search bar. -->
-    <div class="w-full max-w-5xl h-12 bg-slate-200 rounded-md flex flex-col-reverse items-center md:flex-row">
-        <!-- Dropdown to choose between category and content -->
-        <div class="w-1/3 max-w-64 bg-white ml-1 p-[6px] rounded-md hover:bg-slate-100 hover:cursor-pointer flex flex-row justify-between">
-            <div>Dropdown</div>
-            <i data-feather="chevron-down"></i>
-        </div>
-        <div class="w-full px-2">
-            <input class="w-full h-full rounded-md p-[6px] focus:outline-none focus:ring focus:border-primaryAccent" placeholder="Search"/>
-        </div>
+<div class="flex flex-col">
+    <div class="flex flex-row p-4 justify-center items-center">
+        <input placeholder="Search by title or keywords"  class="w-3/5 p-3 rounded-lg"/>
+        <i class="bg-primaryAccent text-white p-1 w-8 h-8 rounded-xl -ml-9" data-feather="search">
     </div>
 </div>
