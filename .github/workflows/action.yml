@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - feature/gh-pages-jekyll
 
 jobs:
   github-pages:
@@ -21,7 +20,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v2
         with:
-          node-version: "20"
+          node-version: "lts/iron"
       # Run npm install to get postcss and tailwindcss
       - run: npm install
       # Run the jekyll build.
