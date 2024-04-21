@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <title>My Posts - Code Blog</title>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+  </head>
+  <body class="w-full min-h-screen flex flex-col justify-between bg-[#f7fafe]">
+    <header class="w-full p-1 z-10">
+  <!-- Desktop header -->
+  <div class="hidden invisible md:visible md:flex flex-row justify-between">
+    <!-- Github avatar with my username -->
+    <a
+      href="https://github.com/PushAndCrashProd"
+      class="flex items-center outline-none hover:bg-primaryAccent hover:text-white p-4 rounded-md transition-colors"
+    >
+      <img src="https://github.com/PushAndCrashProd.png" alt="avatar" width="32" />
+      <p class="font-semibold px-2">PushAndCrashProd</p>
+    </a>
+
+    <div class="flex items-center">
+      <nav>
+        <a
+          class="hover:bg-primaryAccent hover:text-white p-4 rounded-md transition-colors font-semibold"
+          href="/"
+          >Home</a
+        >
+        <a
+          class="hover:bg-primaryAccent hover:text-white p-4 rounded-md transition-colors font-semibold"
+          href="/about"
+          >About</a
+        >
+        <a
+          class="hover:bg-primaryAccent hover:text-white p-4 rounded-md transition-colors font-semibold"
+          href="/posts"
+          >Posts</a
+        >
+      </nav>
+    </div>
+  </div>
+
+  <!-- Mobile header -->
+  <div class="flex flex-row justify-between md:hidden md:invisible">
+    <!-- Github avatar with my username -->
+    <a
+      href="https://github.com/PushAndCrashProd"
+      class="flex items-center outline-none hover:bg-primaryAccent hover:text-white p-4 rounded-md transition-colors"
+    >
+      <img src="https://github.com/PushAndCrashProd.png" alt="avatar" width="32" />
+      <p class="font-semibold px-2">PushAndCrashProd</p>
+    </a>
+    <div class="p-4">
+      <div
+        class="active:bg-primaryAccent transition-colors rounded-full p-1"
+        onclick="handleMobileMenu()"
+      >
+        <i data-feather="menu"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile menu: To be animated into view on click of the menu button. -->
+  <div
+    id="sidenav"
+    class="fixed h-full bg-white -right-3 top-0 w-0 transition-all md:hidden md:invisible shadow-black shadow-2xl"
+  >
+    <div class="p-4">
+      <div class="flex flex-row justify-end">
+        <div
+          class="p-4 active:bg-slate-300 transition-colors rounded-full"
+          onclick="handleMobileMenu()"
+        >
+          <i id="mob-close-btn" class="invisible hidden" data-feather="x"></i>
+        </div>
+      </div>
+      <nav class="flex flex-col items-center pt-8">
+        <a
+          class="hover:bg-primaryAccent hover:text-white p-4 w-full text-center rounded-md transition-colors font-semibold"
+          href="/"
+          >Home</a
+        >
+        <a
+          class="hover:bg-primaryAccent hover:text-white p-4 w-full text-center rounded-md transition-colors font-semibold"
+          href="/about"
+          >About</a
+        >
+        <a
+          class="hover:bg-primaryAccent hover:text-white p-4 w-full text-center rounded-md transition-colors font-semibold"
+          href="/posts"
+          >Posts</a
+        >
+      </nav>
+    </div>
+  </div>
+  <script>
+    feather.replace();
+
+    const handleMobileMenu = () => {
+      const sideNavElement = document.getElementById("sidenav");
+      const closeBtnElement = document.getElementById("mob-close-btn");
+
+      // To "inflate" the menu
+      sideNavElement.classList.toggle("w-0");
+      sideNavElement.classList.toggle("w-2/3");
+
+      // To make the close button visible
+      closeBtnElement.classList.toggle("invisible");
+      closeBtnElement.classList.toggle("hidden");
+    };
+  </script>
+</header>
+
+
+    <main class="flex-1 p-4"><div class="flex flex-col">
+    <!-- Search box   -->
+    <div class="flex flex-row p-4 justify-center items-center">
+        <input placeholder="Search by title or keywords" class="w-full md:w-3/5 p-3 rounded-lg" onkeyup="processPosts(this)" />
+        <i class="bg-primaryAccent text-white p-1 w-8 h-8 rounded-xl -ml-9" data-feather="search"></i>
+    </div>
+    <div class="flex flex-row-reverse justify-evenly items-center flex-wrap-reverse gap-4 py-8" id="posts-area">
+        <!-- Have all the posts visible at the start -->
+        
+    </div>
+
+</div>
+</main>
+
+    <footer class="relative w-full p-1 bg-black">
+  <div class="flex flex-col text-white p-4">
+    <!-- Joke half -->
+    <p id="jokeBox" class="font-semibold text-center">Loading joke ...</p>
+    <div class="text-white/30">
+      <p class="pt-6">
+        Site v0.1.0, developed using a custom theme from scratch.
+      </p>
+      <p class="pt-2">
+        Powered by
+        <a
+          href="https://jekyllrb.org"
+          class="text-primaryAccent hover:underline"
+          >Jekyll</a
+        >
+        and
+        <a
+          href="https://tailwindcss.com/"
+          class="text-primaryAccent hover:underline"
+          >TailwindCSS</a
+        >
+      </p>
+      <p class="pt-2">Published to Github pages through Github Actions.</p>
+      <p class="pt-2">
+        Images courtesy of
+        <a
+          href="https://unsplash.com/"
+          class="text-primaryAccent hover:underline"
+          >Unsplash</a
+        >
+        and
+        <a href="https://undraw.co/" class="text-primaryAccent hover:underline"
+          >Undraw</a
+        >
+      </p>
+    </div>
+  </div>
+
+  <script>
+    const setJoke = (jokeJsonResponse) => {
+      let joke = "";
+      if (jokeJsonResponse.type === "twopart") {
+        joke = jokeJsonResponse.setup + " " + jokeJsonResponse.delivery;
+      } else {
+        joke = jokeJsonResponse.joke;
+      }
+
+      document.getElementById("jokeBox").textContent = joke;
+    };
+
+    const jokeCall = fetch(
+      "https://v2.jokeapi.dev/joke/programming?lang=en&blacklistFlags=nsfw,sexist"
+    );
+
+    jokeCall.then((res) => res.json()).then((data) => setJoke(data));
+  </script>
+</footer>
+
+  </body>
+
+  <script>
+    feather.replace();
+    // Load all the posts from the front matter
+    var posts = [
+      
+    ];
+
+    console.log(posts);
+
+    var postsArea = document.getElementById("posts-area");
+    if(posts.length == 0) {
+      postsArea.innerHTML = "<div style='text-align: center; width: 100%; padding-top: 48px'>No posts published yet!</div>";
+    }
+
+    const processPosts = (e) => {
+      var searchTerm = e.value.toLowerCase();
+      postsArea.innerHTML = "";
+      var filteredPosts = posts.filter(
+        post => post.keyword1.toLowerCase().includes(searchTerm) ||
+        post.keyword2.toLowerCase().includes(searchTerm) ||
+        post.keyword3.toLowerCase().includes(searchTerm) ||
+        post.title.toLowerCase().includes(searchTerm) ||
+        post.excerpt.toLowerCase().includes(searchTerm)
+      );
+
+      if(filteredPosts.length == 0 ) {
+        postsArea.innerHTML = "<div style='text-align: center; width: 100%; padding-top: 48px'>No matching posts found!</div>";
+      } else {
+        filteredPosts.forEach(post => {
+          postsArea.innerHTML +=
+            `<a class="outline:none" href="${post.url}">
+              <div class="max-w-sm rounded overflow-hidden shadow-lg transition-colors hover:bg-primaryAccent hover:text-white">
+                <div class="px-6 py-4">
+                    <div class="font-bold text-xl mb-2">${post.title}</div>
+                    <p class="text-base">
+                    ${post.excerpt}
+                    </p>
+                    <div class="pt-4 font-extralight">
+                        <em>by ${post.author} on ${post.date.human}</em>
+                    </div>
+                </div>
+                <div class="px-6 pt-4 pb-2">
+                    <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">${post.keyword1}</span>
+                    <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">${post.keyword2}</span>
+                    <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">${post.keyword3}</span>
+                </div>
+              </div>
+            </a>`;
+        })
+      }
+    }
+  </script>
+</html>

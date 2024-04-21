@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+    <meta charset="utf-8">
+    <title>Home - Code Blog</title>
+    <link rel="icon" href="https://github.com/PushAndCrashProd.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+  </head>
+  <body class="w-full min-h-screen flex flex-col">
+    <div class="z-10 text-black" style="background-image: linear-gradient(rgba(255,255,255,0.8), 
+    rgba(255,255,255,0));">
+    <header class="w-full p-1 z-10">
+  <!-- Desktop header -->
+  <div class="hidden invisible md:visible md:flex flex-row justify-between">
+    <!-- Github avatar with my username -->
+    <a
+      href="https://github.com/PushAndCrashProd"
+      class="flex items-center outline-none hover:bg-primaryAccent hover:text-white p-4 rounded-md transition-colors"
+    >
+      <img src="https://github.com/PushAndCrashProd.png" alt="avatar" width="32" />
+      <p class="font-semibold px-2">PushAndCrashProd</p>
+    </a>
+
+    <div class="flex items-center">
+      <nav>
+        <a
+          class="hover:bg-primaryAccent hover:text-white p-4 rounded-md transition-colors font-semibold"
+          href="/"
+          >Home</a
+        >
+        <a
+          class="hover:bg-primaryAccent hover:text-white p-4 rounded-md transition-colors font-semibold"
+          href="/about"
+          >About</a
+        >
+        <a
+          class="hover:bg-primaryAccent hover:text-white p-4 rounded-md transition-colors font-semibold"
+          href="/posts"
+          >Posts</a
+        >
+      </nav>
+    </div>
+  </div>
+
+  <!-- Mobile header -->
+  <div class="flex flex-row justify-between md:hidden md:invisible">
+    <!-- Github avatar with my username -->
+    <a
+      href="https://github.com/PushAndCrashProd"
+      class="flex items-center outline-none hover:bg-primaryAccent hover:text-white p-4 rounded-md transition-colors"
+    >
+      <img src="https://github.com/PushAndCrashProd.png" alt="avatar" width="32" />
+      <p class="font-semibold px-2">PushAndCrashProd</p>
+    </a>
+    <div class="p-4">
+      <div
+        class="active:bg-primaryAccent transition-colors rounded-full p-1"
+        onclick="handleMobileMenu()"
+      >
+        <i data-feather="menu"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile menu: To be animated into view on click of the menu button. -->
+  <div
+    id="sidenav"
+    class="fixed h-full bg-white -right-3 top-0 w-0 transition-all md:hidden md:invisible shadow-black shadow-2xl"
+  >
+    <div class="p-4">
+      <div class="flex flex-row justify-end">
+        <div
+          class="p-4 active:bg-slate-300 transition-colors rounded-full"
+          onclick="handleMobileMenu()"
+        >
+          <i id="mob-close-btn" class="invisible hidden" data-feather="x"></i>
+        </div>
+      </div>
+      <nav class="flex flex-col items-center pt-8">
+        <a
+          class="hover:bg-primaryAccent hover:text-white p-4 w-full text-center rounded-md transition-colors font-semibold"
+          href="/"
+          >Home</a
+        >
+        <a
+          class="hover:bg-primaryAccent hover:text-white p-4 w-full text-center rounded-md transition-colors font-semibold"
+          href="/about"
+          >About</a
+        >
+        <a
+          class="hover:bg-primaryAccent hover:text-white p-4 w-full text-center rounded-md transition-colors font-semibold"
+          href="/posts"
+          >Posts</a
+        >
+      </nav>
+    </div>
+  </div>
+  <script>
+    feather.replace();
+
+    const handleMobileMenu = () => {
+      const sideNavElement = document.getElementById("sidenav");
+      const closeBtnElement = document.getElementById("mob-close-btn");
+
+      // To "inflate" the menu
+      sideNavElement.classList.toggle("w-0");
+      sideNavElement.classList.toggle("w-2/3");
+
+      // To make the close button visible
+      closeBtnElement.classList.toggle("invisible");
+      closeBtnElement.classList.toggle("hidden");
+    };
+  </script>
+</header>
+
+    </div>
+
+    <img src="/assets/images/landing-bg.jpg" alt="landing-bg" class="-mt-32 h-[300px] md:h-[400px] object-cover"/>
+    
+    
+    <main class="flex-1 py-10">
+      <div class="flex flex-col p-4 min-h-80 md:flex-row">
+        <!-- Main body -->
+        <div class="flex flex-col flex-1">
+          <h1 class="text-6xl font-bold slide-up">Hi,</h1>
+          <h1 class="pt-2 text-6xl font-bold slide-up">I'm Sri Hari Karthick</h1>
+          <p class="pt-2 text-3xl slide-up">Welcome to my blog page!</p>
+        </div>
+      </div>
+    </main>
+
+    <footer class="relative w-full p-1 bg-black">
+  <div class="flex flex-col text-white p-4">
+    <!-- Joke half -->
+    <p id="jokeBox" class="font-semibold text-center">Loading joke ...</p>
+    <div class="text-white/30">
+      <p class="pt-6">
+        Site v0.1.0, developed using a custom theme from scratch.
+      </p>
+      <p class="pt-2">
+        Powered by
+        <a
+          href="https://jekyllrb.org"
+          class="text-primaryAccent hover:underline"
+          >Jekyll</a
+        >
+        and
+        <a
+          href="https://tailwindcss.com/"
+          class="text-primaryAccent hover:underline"
+          >TailwindCSS</a
+        >
+      </p>
+      <p class="pt-2">Published to Github pages through Github Actions.</p>
+      <p class="pt-2">
+        Images courtesy of
+        <a
+          href="https://unsplash.com/"
+          class="text-primaryAccent hover:underline"
+          >Unsplash</a
+        >
+        and
+        <a href="https://undraw.co/" class="text-primaryAccent hover:underline"
+          >Undraw</a
+        >
+      </p>
+    </div>
+  </div>
+
+  <script>
+    const setJoke = (jokeJsonResponse) => {
+      let joke = "";
+      if (jokeJsonResponse.type === "twopart") {
+        joke = jokeJsonResponse.setup + " " + jokeJsonResponse.delivery;
+      } else {
+        joke = jokeJsonResponse.joke;
+      }
+
+      document.getElementById("jokeBox").textContent = joke;
+    };
+
+    const jokeCall = fetch(
+      "https://v2.jokeapi.dev/joke/programming?lang=en&blacklistFlags=nsfw,sexist"
+    );
+
+    jokeCall.then((res) => res.json()).then((data) => setJoke(data));
+  </script>
+</footer>
+
+  </body>
+</html>
