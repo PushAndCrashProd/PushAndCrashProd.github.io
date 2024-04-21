@@ -7,7 +7,7 @@ include: ["node_modules/tailwindcss"]
 
 # This is for my github pages.
 url: "https://PushAndCrashProd.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
-baseurl: "/blog-pages" # the subpath of your site, e.g. /blog
+baseurl: "" # the subpath of your site, e.g. /blog
 
 title: "Code Blog" # the name of your site, e.g. ACME Corp.
 icon: https://github.com/PushAndCrashProd.png # Icon that is used as the branding everywhere.
