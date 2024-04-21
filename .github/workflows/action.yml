@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - feature/gh-pages-jekyll
     paths-ignore:
       - "Gemfile"
       - "README.md"
@@ -29,15 +30,7 @@ jobs:
           node-version: "20"
       # Install PostCSS plugins (from your package.json)
       - run: npm install
-      - name: Build site
-        # use jekyll-action-ts to build
-        # https://github.com/limjh16/jekyll-action-ts
-        uses: limjh16/jekyll-action-ts@v2
-        with:
-          enable_cache: true
-          # custom_opts: '--verbose --trace'  #'--drafts --future'
-          ### If you need to specify any Jekyll build options, enable the above input
-          ### Flags accepted can be found here https://jekyllrb.com/docs/configuration/options/#build-command-options
+      - run: bundle exec jekyll install --verbose
       # use actions-gh-pages to deploy
       # https://github.com/peaceiris/actions-gh-pages
       - name: Deploy
