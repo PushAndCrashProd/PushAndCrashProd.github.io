@@ -35,7 +35,7 @@ jobs:
       # Install needed gems
       - run: bundle install
       # Build the site
-      - run: JEKYLL_ENV=production bundle exec jekyll build --verbose --trace
+      - run: jekyll build --verbose --trace
       # use actions-gh-pages to deploy
       # https://github.com/peaceiris/actions-gh-pages
       - name: Deploy
