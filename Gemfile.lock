@@ -124,6 +124,7 @@ PLATFORMS
 DEPENDENCIES
   jekyll
   jekyll-postcss
+  webrick (~> 1.8)
 
 BUNDLED WITH
    2.5.7
