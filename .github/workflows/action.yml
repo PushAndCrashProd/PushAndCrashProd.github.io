@@ -31,7 +31,7 @@ jobs:
       # Install PostCSS plugins (from your package.json)
       - run: npm install
       # Install bundler
-      - run: gem install bundler
+      - run: gem install bundler jekyll
       # Install needed gems
       - run: bundle install
       # Build the site
