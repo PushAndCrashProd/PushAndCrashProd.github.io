@@ -1,0 +1,23 @@
+# Each skill is out of 100%
+- name: Spring Boot
+  value: 80
+- name: Docker
+  value: 80
+- name: Helm
+  value: 70
+- name: Kubernetes
+  value: 60
+- name: Harness
+  value: 60
+- name: React
+  value: 60
+- name: React Native
+  value: 50
+- name: Flutter
+  value: 50
+- name: Android
+  value: 40
+- name: iOS (Swift)
+  value: 40
+- name: PyTorch
+  value: 30

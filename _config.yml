@@ -1,0 +1,16 @@
+# This is for my github pages.
+url: "https://PushAndCrashProd.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "" # the subpath of your site, e.g. /blog
+
+title: "Code Blog" # the name of your site, e.g. ACME Corp.
+icon: https://github.com/PushAndCrashProd.png # Icon that is used as the branding everywhere.
+
+social:
+  github: https://github.com/PushAndCrashProd
+  linkedin: https://www.linkedin.com/in/sriharikarthick/
+
+plugins:
+  - jekyll-postcss
+
+postcss:
+  cache: false

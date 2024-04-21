@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
+    <title>{{ page.title }} - {{ site.title }}</title>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+  </head>
+  <body class="w-full min-h-screen flex flex-col justify-between bg-[#f7fafe]">
+    {% include header.html %}
+
+    <main class="flex-1 p-4">{{ content }}</main>
+
+    {% include footer.html %}
+  </body>
+
+  <script>
+    feather.replace();
+    // Load all the posts from the front matter
+    var posts = [
+      {% for post in site.posts %}
+        {
+          date: {
+            human: "{{ post.date | date: '%e %B %Y' }}",
+            machine: "{{ post.date | date: '%Y-%m-%d' }}"
+          },
+          excerpt: "{{ post.excerpt | strip_html | escape | strip }}",
+            title: "{{ post.title | escape }}",
+              url: "{{ site.baseurl }}{{ post.url }}",
+           author: "{{ post.author }}",
+           keyword1: "{{post.keyword1}}",
+           keyword2: "{{post.keyword2}}",
+           keyword3: "{{post.keyword3}}",
+        },
+      {% endfor %}
+    ];
+
+    console.log(posts);
+
+    var postsArea = document.getElementById("posts-area");
+    if(posts.length == 0) {
+      postsArea.innerHTML = "<div style='text-align: center; width: 100%; padding-top: 48px'>No posts published yet!</div>";
+    }
+
+    const processPosts = (e) => {
+      var searchTerm = e.value.toLowerCase();
+      postsArea.innerHTML = "";
+      var filteredPosts = posts.filter(
+        post => post.keyword1.toLowerCase().includes(searchTerm) ||
+        post.keyword2.toLowerCase().includes(searchTerm) ||
+        post.keyword3.toLowerCase().includes(searchTerm) ||
+        post.title.toLowerCase().includes(searchTerm) ||
+        post.excerpt.toLowerCase().includes(searchTerm)
+      );
+
+      if(filteredPosts.length == 0 ) {
+        postsArea.innerHTML = "<div style='text-align: center; width: 100%; padding-top: 48px'>No matching posts found!</div>";
+      } else {
+        filteredPosts.forEach(post => {
+          postsArea.innerHTML +=
+            `<a class="outline:none" href="${post.url}">
+              <div class="max-w-sm rounded overflow-hidden shadow-lg transition-colors hover:bg-primaryAccent hover:text-white">
+                <div class="px-6 py-4">
+                    <div class="font-bold text-xl mb-2">${post.title}</div>
+                    <p class="text-base">
+                    ${post.excerpt}
+                    </p>
+                    <div class="pt-4 font-extralight">
+                        <em>by ${post.author} on ${post.date.human}</em>
+                    </div>
+                </div>
+                <div class="px-6 pt-4 pb-2">
+                    <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">${post.keyword1}</span>
+                    <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">${post.keyword2}</span>
+                    <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">${post.keyword3}</span>
+                </div>
+              </div>
+            </a>`;
+        })
+      }
+    }
+  </script>
+</html>

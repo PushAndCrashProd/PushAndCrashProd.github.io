@@ -1,4 +1,8 @@
-# Logs
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+node_m# Logs
 logs
 *.log
 npm-debug.log*
