@@ -34,6 +34,7 @@ jobs:
       - run: gem install bundler
       # Install needed gems
       - run: bundle install
+      - run: bundle add webrick
       # Build the site
       - run: bundle exec jekyll build --verbose --trace
       # use actions-gh-pages to deploy
