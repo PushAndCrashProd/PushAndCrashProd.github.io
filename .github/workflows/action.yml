@@ -30,7 +30,12 @@ jobs:
           node-version: "20"
       # Install PostCSS plugins (from your package.json)
       - run: npm install
-      - run: bundle exec jekyll install --verbose
+      # Install bundler
+      - run: gem install bundler
+      # Install needed gems
+      - run: bundle install
+      # Build the site
+      - run: bundle exec jekyll build --verbose
       # use actions-gh-pages to deploy
       # https://github.com/peaceiris/actions-gh-pages
       - name: Deploy
